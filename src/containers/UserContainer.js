@@ -10,6 +10,7 @@ let UserContainer = () => {
     const [value, setValue] = useState('')
 
 
+
     function resultUsersFromRequest(usersArray, computersArray){
 
         let array = []
@@ -60,6 +61,7 @@ let UserContainer = () => {
     }
 
     const sortList = (sort) => {
+        console.log(sort+'!')
         setResult([...result].sort((a,b) => a[sort].localeCompare(b[sort])))
     }
 
@@ -71,6 +73,8 @@ let UserContainer = () => {
                 users={users}
                 computers={computers}
                 result={result}
+                sorted={sortList}
+
 
 
             />
