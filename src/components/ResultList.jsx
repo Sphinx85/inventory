@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "../CSS modules/User.module.css";
 
-const ResultList = ({result}) => {
+const ResultList = ({result, setToModal, setModalActive}) => {
 
     return (
         <div>
@@ -16,12 +16,25 @@ const ResultList = ({result}) => {
                                           computerName,
                                       })=>
                         <div className={style.table} >
-                            <span className={style.item}>{name}</span>
+                            <span
+                                className={style.item}
+                                onClick={(event) => {
+                                    setToModal(event.target.textContent)
+                                    setModalActive(true)
+
+                                }}
+                            >{name}</span>
                             <span className={style.item}>{telephone}</span>
                             <span className={style.item}>{mail}</span>
                             <span className={style.item}>{department}</span>
                             <span className={style.item}>{lastLogonTimestamp}</span>
-                            <span className={style.item}>{computerName}</span>
+                            <span
+                                className={style.item}
+                                onClick={(event) => {
+                                    setToModal(event.target.textContent);
+                                    setModalActive(true);
+                                }}
+                            >{computerName}</span>
                         </div>
                     )
                 }

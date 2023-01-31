@@ -1,6 +1,32 @@
 .modal {
-    size: auto;
-    margin: 50px 50px;
-    background-color: #165067;
-    border: 2px ;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.modalContent {
+    padding: 20px;
+    background: #90D1F2;
+    border-radius: 5px;
+    transform: scale(0.5);
+    transition: 0.3s all;
+    width: 50%;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalContent.activeC {
+    transform: scale(1);
 }

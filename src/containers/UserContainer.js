@@ -8,8 +8,21 @@ let UserContainer = () => {
     const [computers, setComputers] = useState([])
     const [result, setResult] = useState([])
     const [value, setValue] = useState('')
+    const [modalActive, setModalActive] = useState(false)
+    const [modalContent, setModalContent] = useState({})
 
-
+    let toModalContent = (current) =>{
+        users.forEach((user)=>{
+            if (user.name.includes(current)){
+                setModalContent(user)
+            }
+        })
+        computers.forEach((computer)=>{
+            if (computer.name.includes(current)){
+                setModalContent(computer)
+            }
+        })
+    }
 
     function resultUsersFromRequest(usersArray, computersArray){
 
@@ -47,16 +60,28 @@ let UserContainer = () => {
         baseURL: 'http://140-it/'
     });
 
+    let instance1 = axios.create({
+        baseURL: 'http://140-it/users'
+    });
+
     let request = (requestText) => {
         instance
-            .get(requestText + '     ')
+            .get(requestText)
             .then(response => {
                 setUsers(response.data[0]);
                 setComputers(response.data[1]);
                 setResult(resultUsersFromRequest(users, computers))
                 //setValue(requestText)
-                console.log(users)
-                console.log(computers)
+
+            })
+    }
+
+    let request1 = (requestText) => {
+        instance1
+            .get(requestText)
+            .then(response=>{
+                setResult(resultUsersFromRequest(response.data,computers))
+                setUsers(response.data)
             })
     }
 
@@ -67,20 +92,27 @@ let UserContainer = () => {
 
     return(
             <User
+
+                modalContent={modalContent}
+                toModalContent={toModalContent}
+
                 request={request}
+                modalActive={modalActive}
+                setModalActive={setModalActive}
                 value={value}
                 setValue={setValue}
                 users={users}
                 computers={computers}
                 result={result}
                 sorted={sortList}
+                userReq={request1}
 
 
 
             />
     )
-        
-  
+
+
 }
 
 export default UserContainer;

@@ -1,14 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import style from'../../CSS modules/User.module.css'
-const MySelect = ({defaultValue, onChange, value}) => {
+import style2 from '../../CSS modules/Select.module.css'
+import MySortButton from "../button/MySortButton";
+
+
+const MySelect = ({request}) => {
+
+
+
+    const [userMenu] = useState([
+        {value: 'Все пользователи', request: "all"},
+        {value: 'Индукерн', request: "/indukern"},
+        {value: 'Велфарм', request: "/velpharm"},
+        {value: 'Активные пользователи', request: "city"},]
+    );
     return (
-        <select
-            onChange={event => onChange(event.target.value )}
-        >
-            <option value='Пользователи' className={style.headerButtons}>{defaultValue}</option>
-            <option value={value}>По возрастанию</option>
-            <option value={value}>По убыванию</option>
-        </select>
+
+
+
+        <menu className={[style.headerButtons, style2.select].join(' ')}>
+            {userMenu.map(
+                button=><MySortButton onClick={request} value={button.request} name={button.value}/>
+            )}
+        </menu>
     );
 };
 

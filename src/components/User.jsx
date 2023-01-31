@@ -3,27 +3,39 @@ import style from'../CSS modules/User.module.css'
 import MyInput from "../UI/input/MyInput";
 import ResultList from "./ResultList";
 import SortButtons from "./SortButtons";
+import MySelect from "../UI/select/MySelect";
+import InfoModal from "./InfoModal";
 
 let User = (props) =>{
 
     return(
-        <div className={style.content +' '+ style.main}>
+        <div className={[style.content, style.main].join(' ')}>
+            <InfoModal
+                active={props.modalActive}
+                setActive={props.setModalActive}
+                modalContent={props.modalContent}
+            />
             <span className={style.header}>
             <button className={style.headerButtons}>{'Пользователи ('+props.result.length+')' }</button>
+            <MySelect request={props.userReq} />
             <button className={style.headerButtons}>Компьютеры</button>
             <MyInput
                 value={props.value}
                 setValue={props.setValue}
                 request={props.request}
             />
-            <button className={style.headerButtons}>Группы</button>
+            <button className={style.headerButtons} onClick={()=> props.setModalActive(true)}>Группы</button>
             </span>
             <div>
                <SortButtons sorted={props.sorted}/>
                 <hr/>
                 {
                     props.result.length
-                        ? <ResultList result={props.result} />
+                        ? <ResultList
+                            result={props.result}
+                            setToModal={props.toModalContent}
+                            setModalActive={props.setModalActive}
+                        />
                         : <div style={{
                             textAlign: 'center',
                             fontSize: 20,
@@ -31,8 +43,6 @@ let User = (props) =>{
 
                         }}>Результаты не найдены</div>
                 }
-
-
             </div>
         </div>
     )
