@@ -68,6 +68,8 @@ let UserContainer = () => {
         instance
             .get(requestText)
             .then(response => {
+                setUsers([])
+                setComputers([])
                 setUsers(response.data[0]);
                 setComputers(response.data[1]);
                 setResult(resultUsersFromRequest(users, computers))
@@ -80,7 +82,13 @@ let UserContainer = () => {
         instance1
             .get(requestText)
             .then(response=>{
+                setUsers([])
+                setComputers([])
+                setValue('')
                 setResult(resultUsersFromRequest(response.data,computers))
+                console.log(response.data)
+                console.log(computers)
+                console.log(users)
                 setUsers(response.data)
             })
     }
