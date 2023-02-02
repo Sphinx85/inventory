@@ -10,6 +10,7 @@ let UserContainer = () => {
     const [value, setValue] = useState('')
     const [modalActive, setModalActive] = useState(false)
     const [modalContent, setModalContent] = useState({})
+    const [userMenuActive, setUserMenuActive] = useState(false)
 
     let toModalContent = (current) =>{
         users.forEach((user)=>{
@@ -27,8 +28,8 @@ let UserContainer = () => {
     function resultUsersFromRequest(usersArray, computersArray){
 
         let array = []
-        function pushToArray(user,computer){
 
+        function pushToArray(user,computer){
             array.push({
                 name: user.name,
                 telephone: user.telephone,
@@ -44,28 +45,25 @@ let UserContainer = () => {
                 if (computer.managedBy.includes(user.name)){
                     pushToArray(user,computer)
                 }
-
             })
         })
         if (array.length === 0){
-            usersArray.forEach(user=>pushToArray(user,{name: 'Не найдено'}))
-
+            usersArray.forEach(user=>
+                pushToArray(user,{name: 'Не найдено'}))
             return array
         } else return array
-
-
     }
 
-    let instance = axios.create({
+    let instanceBase = axios.create({
         baseURL: 'http://140-it/'
     });
 
-    let instance1 = axios.create({
+    let instanceUser = axios.create({
         baseURL: 'http://140-it/users'
     });
 
     let request = (requestText) => {
-        instance
+        instanceBase
             .get(requestText)
             .then(response => {
                 setUsers([])
@@ -73,13 +71,11 @@ let UserContainer = () => {
                 setUsers(response.data[0]);
                 setComputers(response.data[1]);
                 setResult(resultUsersFromRequest(users, computers))
-                //setValue(requestText)
-
             })
     }
 
-    let request1 = (requestText) => {
-        instance1
+    let requestUserMenuItems = (requestText) => {
+        instanceUser
             .get(requestText)
             .then(response=>{
                 setUsers([])
@@ -100,10 +96,10 @@ let UserContainer = () => {
 
     return(
             <User
-
+                userMenuActive={userMenuActive}
+                setUserMenuActive={setUserMenuActive}
                 modalContent={modalContent}
                 toModalContent={toModalContent}
-
                 request={request}
                 modalActive={modalActive}
                 setModalActive={setModalActive}
@@ -113,14 +109,9 @@ let UserContainer = () => {
                 computers={computers}
                 result={result}
                 sorted={sortList}
-                userReq={request1}
-
-
-
+                userReq={requestUserMenuItems}
             />
     )
-
-
 }
 
 export default UserContainer;

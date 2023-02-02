@@ -16,15 +16,23 @@ let User = (props) =>{
                 modalContent={props.modalContent}
             />
             <span className={style.header}>
-            <button className={style.headerButtons}>{'Пользователи ('+props.result.length+')' }</button>
-            <MySelect request={props.userReq} />
-            <button className={style.headerButtons}>Компьютеры</button>
-            <MyInput
-                value={props.value}
-                setValue={props.setValue}
-                request={props.request}
-            />
-            <button className={style.headerButtons} onClick={()=> props.setModalActive(true)}>Группы</button>
+
+                <MySelect
+                    request={props.userReq}
+                    usersCount={props.result.length}
+                    setVisibleMenu={props.setUserMenuActive}
+                    visibleMenu={props.userMenuActive}
+                />
+                <button className={style.headerButtons}>Компьютеры</button>
+                <MyInput
+                    value={props.value}
+                    setValue={props.setValue}
+                    request={props.request}
+                />
+                <button
+                    className={style.headerButtons}
+                    onClick={()=> props.setModalActive(true)}
+                >Группы</button>
             </span>
             <div>
                <SortButtons sorted={props.sorted}/>

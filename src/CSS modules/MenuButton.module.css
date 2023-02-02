@@ -1,0 +1,25 @@
+
+
+.main {
+
+    transition: color,background-color 500ms ease;
+    background: #90D1F2;
+    color: #165067;
+    border-radius: 5px;
+    font-size: 20px;
+    //padding: 5px;
+    margin: 10px auto ;
+    width: 90%;
+    //border: 0;
+}
+
+.main:hover {
+    background: #23637C;
+    color: white;
+}
+
+.main:active {
+    transition: 1ms;
+    background: white;
+    color: #165067;
+}

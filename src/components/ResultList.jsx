@@ -18,6 +18,7 @@ const ResultList = ({result, setToModal, setModalActive}) => {
                         <div className={style.table} >
                             <span
                                 className={style.item}
+                                style={{cursor: "pointer"}}
                                 onClick={(event) => {
                                     setToModal(event.target.textContent)
                                     setModalActive(true)
@@ -30,6 +31,7 @@ const ResultList = ({result, setToModal, setModalActive}) => {
                             <span className={style.item}>{lastLogonTimestamp}</span>
                             <span
                                 className={style.item}
+                                style={{cursor: "pointer"}}
                                 onClick={(event) => {
                                     setToModal(event.target.textContent);
                                     setModalActive(true);
