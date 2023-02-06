@@ -65,14 +65,39 @@
     grid-template-columns: 16% 16% 16% 16% 16% 16%;
     grid-template-areas:
         "item item item item item item";
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 5px;
+    justify-content: space-around;
+    //margin-left: 10px;
     /*grid-auto-columns: 6fr;*/
+
+}
+
+.tableRes {
+    /*margin: 30px 10px auto;*/
+    display: grid;
+    grid-template-rows: initial;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-template-areas:
+        "item item item item item item";
+    margin-top: 5px;
+    justify-content: space-around;
+    transition: 0.5s all;
+//margin-left: 10px;
+    /*grid-auto-columns: 6fr;*/
+
+}
+
+.tableRes:hover{
+    background-color: #165067;
+    color: #DBF3FF;
 }
 
 .item {
     /*font-size: 20px;*/
-    margin: auto auto auto;
+    //margin: auto auto auto;
+    text-align: left;
+    margin-left: 10%;
+
 }
 
 .headerTable {

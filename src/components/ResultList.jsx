@@ -15,7 +15,7 @@ const ResultList = ({result, setToModal, setModalActive}) => {
                                           telephone,
                                           computerName,
                                       })=>
-                        <div className={style.table} >
+                        <div className={style.tableRes} >
                             <span
                                 className={style.item}
                                 style={{cursor: "pointer"}}

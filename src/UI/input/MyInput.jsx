@@ -7,8 +7,8 @@ const MyInput = ({value, setValue, request}) => {
         <input
             className={style.search + ' ' + style.headerButtons}
             onChange={event => {
-                request(event.target.value)
                 setValue(event.target.value)
+                request(event.target.value)
             }}
             type={'text'}
             placeholder={'Поиск...'}

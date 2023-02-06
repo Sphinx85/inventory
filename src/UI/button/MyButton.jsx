@@ -1,14 +1,12 @@
 import React from 'react';
 import style from "../../CSS modules/User.module.css";
 
-const MySortButton = ( {value, name,visibleMenu,setVisibleMenu}) => {
+const MyButton = ({value, name,visibleMenu,setVisibleMenu}) => {
     return (
         <button
             onMouseEnter={()=>
-
                     setVisibleMenu(true)
             }
-            /*onMouseLeave={()=> setVisibleMenu(false)}*/
             onClick={()=> {
                 visibleMenu?
                     setVisibleMenu(false)
@@ -23,4 +21,4 @@ const MySortButton = ( {value, name,visibleMenu,setVisibleMenu}) => {
     );
 };
 
-export default MySortButton;
+export default MyButton;

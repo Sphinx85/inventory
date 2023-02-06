@@ -25,7 +25,7 @@ let UserContainer = () => {
         })
     }
 
-    function resultUsersFromRequest(usersArray, computersArray){
+    function resultUsersFromRequestNew([users,computers]){
 
         let array = []
 
@@ -40,52 +40,55 @@ let UserContainer = () => {
             })
         }
 
-        usersArray.forEach(user =>{
-            computersArray.forEach(computer=>{
+        users.forEach(user =>{
+            let count = array.length
+            computers.forEach(computer=>{
                 if (computer.managedBy.includes(user.name)){
                     pushToArray(user,computer)
                 }
             })
+            if (count===array.length){
+                pushToArray(user,{name: "Не найдено"})
+            }
         })
-        if (array.length === 0){
-            usersArray.forEach(user=>
-                pushToArray(user,{name: 'Не найдено'}))
-            return array
-        } else return array
+        setResult(array)
     }
 
     let instanceBase = axios.create({
-        baseURL: 'http://140-it/'
+        baseURL: 'http://140-it:88/'
     });
 
     let instanceUser = axios.create({
-        baseURL: 'http://140-it/users'
+        baseURL: 'http://140-it:88/users'
+    });
+
+    let instanceComputer = axios.create({
+        baseURL: 'http://140-it:88/computers'
     });
 
     let request = (requestText) => {
         instanceBase
             .get(requestText)
-            .then(response => {
-                setUsers([])
-                setComputers([])
-                setUsers(response.data[0]);
-                setComputers(response.data[1]);
-                setResult(resultUsersFromRequest(users, computers))
+            .then(response=>{
+                resultUsersFromRequestNew(response.data)
+                setUsers(response.data[0])
+                setComputers(response.data[1])
             })
+    }
+
+    let requestComputerMenuItems = (requestText)=>{
+        instanceComputer
+            .get(requestText)
+            .then(response=>setComputers(response.data))
     }
 
     let requestUserMenuItems = (requestText) => {
         instanceUser
             .get(requestText)
             .then(response=>{
-                setUsers([])
-                setComputers([])
-                setValue('')
-                setResult(resultUsersFromRequest(response.data,computers))
-                console.log(response.data)
-                console.log(computers)
-                console.log(users)
-                setUsers(response.data)
+                resultUsersFromRequestNew(response.data)
+                setUsers(response.data[0])
+                setComputers(response.data[1])
             })
     }
 
