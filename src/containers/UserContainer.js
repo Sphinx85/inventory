@@ -13,6 +13,10 @@ let UserContainer = () => {
     const [userMenuActive, setUserMenuActive] = useState(false)
 
     let toModalContent = (current) =>{
+        if (current==="Не найдено"){
+            setModalContent({name: 'Не найдено'})
+            return
+        }
         users.forEach((user)=>{
             if (user.name.includes(current)){
                 setModalContent(user)
