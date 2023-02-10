@@ -1,7 +1,9 @@
 import React from 'react';
 import style from "../CSS modules/User.module.css";
+import Href from "../UI/href/Href";
 
 const ResultList = ({result, setToModal, setModalActive}) => {
+
 
     return (
         <div>
@@ -26,7 +28,10 @@ const ResultList = ({result, setToModal, setModalActive}) => {
                                 }}
                             >{name}</span>
                             <span className={style.item}>{telephone}</span>
-                            <span className={style.item}>{mail}</span>
+                            <span className={style.item}>
+                                <Href mail={mail} />
+                            </span>
+                            {/*<span className={style.item} onClick={()=>{}}>{mail}</span>*/}
                             <span className={style.item}>{department}</span>
                             <span className={style.item}>{lastLogonTimestamp}</span>
                             <span

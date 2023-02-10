@@ -23,7 +23,7 @@ let User = (props) =>{
                     setVisibleMenu={props.setUserMenuActive}
                     visibleMenu={props.userMenuActive}
                 />
-                <button className={style.headerButtons}>Компьютеры</button>
+                <button className={style.headerButtons} onClick={props.znak}>Компьютеры</button>
                 <MyInput
                     value={props.value}
                     setValue={props.setValue}

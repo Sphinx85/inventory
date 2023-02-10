@@ -1,3 +1,4 @@
+
 .content {
     grid-area: content;
     background-color: #DBF3FF;
@@ -5,7 +6,6 @@
     border-radius: 1px;
 
 }
-
 .main {
     text-align: center;
     display: grid;
@@ -16,7 +16,6 @@
         "result";
     margin: 10px auto auto;
 }
-
 .headerButtons {
     transition: color,background-color 500ms ease;
     background: #90D1F2;
@@ -72,6 +71,7 @@
 
 }
 
+
 .tableRes {
     /*margin: 30px 10px auto;*/
     display: grid;
@@ -83,13 +83,26 @@
     justify-content: space-around;
     transition: 0.5s all;
 //margin-left: 10px;
+    text-decoration: none;
+
+
+
     /*grid-auto-columns: 6fr;*/
 
 }
+/*.element {
+    color: #282c34;
+}
+.element:hover{
+    color: #dbf3ff;
+}*/
 
 .tableRes:hover{
     background-color: #165067;
     color: #DBF3FF;
+
+
+
 }
 
 .item {
@@ -98,7 +111,9 @@
     text-align: left;
     margin-left: 10%;
 
+
 }
+
 
 .headerTable {
     background: #90D1F2;
