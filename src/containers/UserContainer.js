@@ -83,7 +83,10 @@ let UserContainer = () => {
     let  zznak = async () => {
         await fetch('https://api.mdlp.crpt.ru/api/v1/auth',{
             method:'POST',
-            headers:{ 'Content-Type': 'application/json, text/plain, */*'},
+            headers:{
+                'Content-Type': 'application/json',
+                'Sec-Fetch-Mode': 'none'
+            },
             body: JSON.stringify({
                 client_secret: '3debeeba-8565-414d-bf6c-eb79a1a06853',
                 client_id: 'b5cc8c47-c2c2-4a66-af6b-625a5721929e',

@@ -1,9 +1,11 @@
 import React from 'react';
 import style from "../CSS modules/User.module.css";
-import Href from "../UI/href/Href";
 
 const ResultList = ({result, setToModal, setModalActive}) => {
 
+    const linkRun = (mail)=>{
+        window.open('mailto:' + mail)
+    }
 
     return (
         <div>
@@ -28,10 +30,7 @@ const ResultList = ({result, setToModal, setModalActive}) => {
                                 }}
                             >{name}</span>
                             <span className={style.item}>{telephone}</span>
-                            <span className={style.item}>
-                                <Href mail={mail} />
-                            </span>
-                            {/*<span className={style.item} onClick={()=>{}}>{mail}</span>*/}
+                            <span className={style.item} onClick={()=>{linkRun(mail)}} style={{cursor:"pointer"}}>{mail}</span>
                             <span className={style.item}>{department}</span>
                             <span className={style.item}>{lastLogonTimestamp}</span>
                             <span

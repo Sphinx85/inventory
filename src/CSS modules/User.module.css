@@ -1,4 +1,10 @@
-
+/*a{
+    color: #165067;
+    text-decoration: none;
+}
+a:hover{
+    color: #dbf3ff;
+}*/
 .content {
     grid-area: content;
     background-color: #DBF3FF;
@@ -73,7 +79,6 @@
 
 
 .tableRes {
-    /*margin: 30px 10px auto;*/
     display: grid;
     grid-template-rows: initial;
     grid-template-columns: 16% 16% 16% 16% 16% 16%;
@@ -82,24 +87,12 @@
     margin-top: 5px;
     justify-content: space-around;
     transition: 0.5s all;
-//margin-left: 10px;
-    text-decoration: none;
-
-
-
-    /*grid-auto-columns: 6fr;*/
-
+    color-adjust: exact;
 }
-/*.element {
-    color: #282c34;
-}
-.element:hover{
-    color: #dbf3ff;
-}*/
-
 .tableRes:hover{
     background-color: #165067;
     color: #DBF3FF;
+    color-adjust: unset;
 
 
 
@@ -110,6 +103,8 @@
     //margin: auto auto auto;
     text-align: left;
     margin-left: 10%;
+
+
 
 
 }
