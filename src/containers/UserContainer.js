@@ -80,40 +80,12 @@ let UserContainer = () => {
 
 
 
-    let  zznak = async () => {
-        await fetch('https://api.mdlp.crpt.ru/api/v1/auth',{
-            method:'POST',
-            headers:{
-                'Content-Type': 'application/json',
-                'Sec-Fetch-Mode': 'none'
-            },
-            body: JSON.stringify({
-                client_secret: '3debeeba-8565-414d-bf6c-eb79a1a06853',
-                client_id: 'b5cc8c47-c2c2-4a66-af6b-625a5721929e',
-                user_id: 'D66D970E393ACD6833CE7879BCF73F8AD184F349',
-                auth_type: 'PASSWORD'
-            })
-        }).then(res=>console.log(res.json())).then(data=>console.log(data))
-    }
-    //этот под этим
-    /*fetch('https://api.mdlp.crpt.ru/api/v1/auth', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({client_secret: '3debeeba-8565-414d-bf6c-eb79a1a06853', client_id: 'b5cc8c47-c2c2-4a66-af6b-625a5721929e', user_id: 'D66D970E393ACD6833CE7879BCF73F8AD184F349', auth_type: 'SIGNED_CODE'})
-    }).then(res=>console.log(res))*/
+    let  zznak =  () => {
+         axios.get("http://localhost:89/fora").then(resp=>{
+             alert(JSON.stringify(resp.data));
+             console.log(resp.data)
+         })}
 
-    /*let zznak = () => {
-        fetch(baseUrl,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(dataAuth)
-        }).then(response=>console.log(response))
-
-    }*/
 
     let z2znak = axios.create({
         //baseURL: {baseUrl},

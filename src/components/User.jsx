@@ -5,6 +5,7 @@ import ResultList from "./ResultList";
 import SortButtons from "./SortButtons";
 import MySelect from "../UI/select/MySelect";
 import InfoModal from "./InfoModal";
+import FileSignatureCryptoPro from "./FileSignatureCryptoPro";
 
 let User = (props) =>{
 
@@ -17,6 +18,11 @@ let User = (props) =>{
             />
             <span className={style.header}>
 
+                <MyInput
+                    value={props.value}
+                    setValue={props.setValue}
+                    request={props.request}
+                />
                 <MySelect
                     request={props.userReq}
                     usersCount={props.result.length}
@@ -24,11 +30,7 @@ let User = (props) =>{
                     visibleMenu={props.userMenuActive}
                 />
                 <button className={style.headerButtons} onClick={props.znak}>Компьютеры</button>
-                <MyInput
-                    value={props.value}
-                    setValue={props.setValue}
-                    request={props.request}
-                />
+
                 <button
                     className={style.headerButtons}
                     onClick={()=> props.setModalActive(true)}

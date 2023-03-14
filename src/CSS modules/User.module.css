@@ -111,6 +111,7 @@ a:hover{
 
 
 .headerTable {
+    display: flex;
     background: #90D1F2;
     color: #165067;
     width: 90%;
@@ -122,7 +123,7 @@ a:hover{
 .header {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 15% 15% 55% 15%;
+    grid-template-columns: 45% 15% 15% 15%;
     grid-template-areas:
         "item item item item";
     margin-top: 10px;
